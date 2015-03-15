@@ -1,0 +1,30 @@
+.jumbotron{
+	text-align: center;
+}
+
+form{
+	width: 350px;
+	margin: 0 auto;
+}
+
+.files{
+	width: 500px;
+	margin: 0 auto;
+}
+
+.files li{
+	margin: 20px;
+}
+
+ul{
+	margin: 20px;
+}
+
+ul li a{
+	display: inline !important;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+	text-decoration: underline;
+	background: none;
+}

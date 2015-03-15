@@ -1,0 +1,16 @@
+<ul>
+{% for node in final_list %}
+	<li>
+		{% if node.get_type == tuple %}
+			
+			<a href="#">{{ node.0 }}</a>
+			{% with final_list=node.1 template_name="decompile/tree_view.html" %}
+				{% include template_name %}
+			{% endwith %}
+		{% else %}
+			<a href="#">{{ node }}</a>
+		{% endif %}
+	</li>
+
+{% endfor %}
+</ul>

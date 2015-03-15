@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+		
+	<form action="/decompile/upload/" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{% for field in form.visible_fields %}
+			<p>{{ field.label }}<span>{{ field }}</span>{{ field.help_text }}</p>
+		{% endfor %}
+		<input type="submit" value="Upload" class="btn-large btn btn-primary" />
+	</form>
+
+{% endblock %}

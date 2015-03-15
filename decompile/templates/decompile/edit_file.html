@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Edit your code</title>
+		<style type="text/css" media="screen">
+		    #editor { 
+		       width:100%;
+		       height: 800px;
+		       
+		       font-size: 15px;
+		    }
+		    #saveBtn{
+		    	margin-bottom:20px; 
+		    }
+		</style>
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/decompile/">Decompile</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="/decompile/view_files/">View Files</a></li>
+					</ul>
+									
+				</div><!--/.nav-collapse -->
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+	<div id="editor">
+{{ content }}
+	</div>
+				</div>
+				<div class="col-md-3">
+					<div>
+						<p><a href="#" id="saveBtn" class="btn btn-primary btn-large ">Save the file</a></p>
+						<p></p>
+					</div>
+				</div>
+			</div>
+			<br/>
+		</div>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="{{ STATIC_URL }}/js/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var syntax = "ace/mode/{{ file_extn }}";
+		    var editor = ace.edit("editor");
+		    editor.setTheme("ace/theme/cobalt");
+		    editor.getSession().setMode(syntax);
+		    var main = function () {
+		    	$('#saveBtn').click(function() {
+		    		saveFile("editor");
+		    	});
+		    };
+		    $(document).ready(main);
+		    function saveFile(editorid){
+		    	var e1Html = $('#'+editorid).html;
+		    	var link = document.createElement('a');
+		    	mimeType = "text/{{ file_extn }}";
+		    	link.setAttribute('download', "file_name");
+			    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(e1Html));
+			    link.click();
+		    }
+		</script>
+	</body>
+</html>

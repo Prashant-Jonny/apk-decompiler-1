@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+	<div>					
+		{% if apkfiles %}		
+			<ul class="files">
+				{% for apks in apkfiles%}
+					<li>
+						<a href="{{ apks.apkfile.url }}">{{ apks.apkfile.name }}</a>&nbsp;&nbsp;<a href="/decompile/dcmpl/{{ apks.apkfile.name|slice:':-4' }}/" class="btn btn-primary btn-large">View Activites / Services</a>&nbsp;&nbsp;<a href="/decompile/show_dir/{{ apks.apkfile.name|slice:':-4' }}/" class="btn btn-primary btn-large">Show Directory</a>
+					</li>
+				{% endfor %}
+			</ul>		
+		{% endif %}
+	</div>
+{% endblock %}

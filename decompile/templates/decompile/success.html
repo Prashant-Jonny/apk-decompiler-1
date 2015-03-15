@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+<div class="row" >
+	<div class="col-md-6">
+		{% if activities %}
+			<h2 style="text-align:center">Activities</h2>
+			<ul>
+				{% for activity in activities %}
+					<li> {{ activity }} </li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p>No Activities</p>
+		{% endif %}
+	</div>
+	<div class="col-md-6">
+		{% if services %}
+			<h2 style="text-align:center">Services</h2>
+			<ul>
+				{% for activity in services %}
+					<li> {{ activity }} </li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p>No Services</p>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

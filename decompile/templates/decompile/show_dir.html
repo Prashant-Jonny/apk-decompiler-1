@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+	
+	<div>
+		{% autoescape off %}
+			{{ final_list }}
+		{% endautoescape %}
+	</div>
+
+{% endblock %}
